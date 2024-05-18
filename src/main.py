@@ -1,5 +1,6 @@
-import random # for generating random numbers
-import os     # for clearing the console
+import random # For generating random numbers
+import os     # For clearing the console
+
 
 def clear_console():
     # Clear the console based on the operating system
@@ -7,7 +8,7 @@ def clear_console():
     os.system(command)
 
 
-def play_guessing_game(tries: int, TARGET_NUMBER: int):
+def play_guessing_game(tries: int, TARGET_NUMBER: int) -> bool:
     print("Guess a number between 1 and 25")
 
     # Loop until all tries are used
@@ -18,12 +19,12 @@ def play_guessing_game(tries: int, TARGET_NUMBER: int):
 
         # Compare the user's guess with the target number
         if guess < TARGET_NUMBER:
-            print(f"Your number {guess} is lower than the target number")
-        elif guess > TARGET_NUMBER:
             print(f"Your number {guess} is higher than the target number")
+        elif guess > TARGET_NUMBER:
+            print(f"Your number {guess} is lower than the target number")
         else:
             return True
-
+    
         tries -= 1
 
     # Return False if all tries have been used up without guessing the correct number
@@ -31,18 +32,17 @@ def play_guessing_game(tries: int, TARGET_NUMBER: int):
 
 
 def main():
-    tries = 5
-    TARGET_NUMBER = random.randint(1, 25)
+    tries: int = 5
+    TARGET_NUMBER: int = random.randint(1, 25)
 
     found = play_guessing_game(tries, TARGET_NUMBER)
 
     clear_console()
     print(f"The target number was [{TARGET_NUMBER}]")
 
-    if found:
-        print("Congratulations, you guessed correctly!\n")
-    else:
-        print("Good luck next time!\n")
+    # Ternary operator
+    resultPromt = "Congratulations, you guessed correctly!\n" if found else "Good luck next time!\n"
+    print(resultPromt)
 
     os.system('pause')
 
