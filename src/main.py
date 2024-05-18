@@ -40,9 +40,11 @@ def main():
     print(f"The target number was [{TARGET_NUMBER}]")
 
     if found:
-        print("Congratulations, you guessed correctly!")
+        print("Congratulations, you guessed correctly!\n")
     else:
-        print("Good luck next time!")
+        print("Good luck next time!\n")
+
+    os.system('pause')
 
 
 # Executes our program in main function
