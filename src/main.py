@@ -11,13 +11,13 @@ def play_guessing_game(tries: int, TARGET_NUMBER: int):
     print("Guess a number between 1 and 25")
 
     # Loop until all tries are used
-    while(tries):
+    while tries:
         print(f"Your current tries [{tries}]")
         guess = int(input("Guess number: "))
         print() # Print endline after user input
 
         # Compare the user's guess with the target number
-        if(guess < TARGET_NUMBER):
+        if guess < TARGET_NUMBER:
             print(f"Your number {guess} is lower than the target number")
         elif guess > TARGET_NUMBER:
             print(f"Your number {guess} is higher than the target number")
