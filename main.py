@@ -10,9 +10,9 @@ def main():
         guess = int(input("Guess number: "))
 
         if guess < targetNumber:
-            print("Your number is higher than the target number\n")
-        elif guess > targetNumber:
             print("Your number is less than the target number\n")
+        elif guess > targetNumber:
+            print("Your number is higher than the target number\n")
         else:
             os.system('cls')
             print("You won the target number was [" + str(targetNumber ) + "]")
