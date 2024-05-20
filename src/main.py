@@ -2,12 +2,13 @@ import random # For generating random numbers
 import os     # For clearing the console
 
 
+# Clear the console based on the operating system
 def clear_console():
-    # Clear the console based on the operating system
     command = 'cls' if os.name == 'nt' else 'clear'
     os.system(command)
 
 
+# Prompt user for input and ensure it's a valid integer
 def getValidInput(prompt: str) -> int:
     while True:
         try:
@@ -16,6 +17,7 @@ def getValidInput(prompt: str) -> int:
             print("Invalid input. please enter a valid number.")
 
 
+# Compares guess with target number, returns True if correct, else False
 def compareGuess(guess: int, TARGET_NUMBER: int) -> bool:
     if guess < TARGET_NUMBER:
         print(f"Your number {guess} is lower than the target number")
