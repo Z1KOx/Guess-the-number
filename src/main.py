@@ -1,66 +1,23 @@
-import random # For generating random numbers
-import os     # For clearing the console
-
-
-# Clear the console based on the operating system
-def clear_console():
-    command = 'cls' if os.name == 'nt' else 'clear'
-    os.system(command)
-
-
-# Prompt user for input and ensure it's a valid integer
-def getValidInput(prompt: str) -> int:
-    while True:
-        try:
-            return int(input(prompt))
-        except ValueError:
-            print("Invalid input. please enter a valid number.")
-
-
-# Compares guess with target number, returns True if correct, else False
-def compareGuess(guess: int, TARGET_NUMBER: int) -> bool:
-    if guess < TARGET_NUMBER:
-        print(f"Your number {guess} is lower than the target number")
-    elif guess > TARGET_NUMBER:
-        print(f"Your number {guess} is higher than the target number")
-    else:
-        return True
-    
-    return False
-
-
-def guessingGame(tries: int, TARGET_NUMBER: int) -> bool:
-    print("Guess a number between 1 and 25")
-
-    # Loop until all tries are used
-    while tries:
-        print(f"Your current tries [{tries}]")
-        guess = getValidInput("Guess number: ")
-        print() # Print endline after user input
-
-        if compareGuess(guess, TARGET_NUMBER):
-            return True
-
-        tries -= 1
-
-    # Return False if all tries have been used up without guessing the correct number
-    return False
+from game import gameStart
+from console import consoleClear, consolePause
+import random
 
 
 def main():
-    tries: int = 5
+    attempts: int = 5
     TARGET_NUMBER: int = random.randint(1, 25)
 
-    found = guessingGame(tries, TARGET_NUMBER)
-
-    clear_console()
+    found = gameStart(attempts, TARGET_NUMBER)
+    consoleClear()
+    
     print(f"The target number was [{TARGET_NUMBER}]")
+    
+    if found:
+        print("Congratulations, you guessed correctly!\n")
+    else:
+        print("Good luck next time!\n")
 
-    # Ternary operator
-    resultPrompt = "Congratulations, you guessed correctly!\n" if found else "Good luck next time!\n"
-    print(resultPrompt)
-
-    os.system('pause')
+    consolePause()
 
 
 # Executes our program in main function
